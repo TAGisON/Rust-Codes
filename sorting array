@@ -1,0 +1,22 @@
+fn binary_search(nums: &[i32], target: i32) -> Option<usize> {
+    let mut left = 0;
+    let mut right = nums.len() - 1;
+
+    while left <= right {
+        let mid = left + (right - left) / 2;
+        if nums[mid] == target {
+            // Found the target, now find the first occurrence
+            let mut index = mid;
+            while index > 0 && nums[index - 1] == target {
+                index -= 1;
+            }
+            return Some(index);
+        } else if nums[mid] < target {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    None // Target not found
+}
