@@ -1,0 +1,11 @@
+fn find_median(nums: &[i32]) -> f64 {
+    let len = nums.len();
+    if len % 2 == 0 {
+        // If the array has even number of elements, take the average of the two middle elements
+        let mid = len / 2;
+        (nums[mid - 1] + nums[mid]) as f64 / 2.0
+    } else {
+        // If the array has odd number of elements, return the middle element
+        nums[len / 2] as f64
+    }
+}
