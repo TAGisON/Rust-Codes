@@ -1,0 +1,31 @@
+fn quickselect(arr: &mut [i32], k: usize) -> i32 {
+    let len = arr.len();
+    if len == 1 {
+        return arr[0];
+    }
+
+    let pivot = arr[0];
+    let mut left = 1;
+    let mut right = len - 1;
+
+    while left <= right {
+        if arr[left] <= pivot {
+            left += 1;
+        } else if arr[right] > pivot {
+            right -= 1;
+        } else {
+            arr.swap(left, right);
+        }
+    }
+
+    arr.swap(0, right);
+    let rank = right + 1;
+
+    if rank == k {
+        arr[right]
+    } else if rank < k {
+        quickselect(&mut arr[rank..], k - rank)
+    } else {
+        quickselect(&mut arr[..right], k)
+    }
+}
