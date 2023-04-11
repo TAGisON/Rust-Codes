@@ -1,0 +1,22 @@
+fn longest_common_prefix(strs: &[String]) -> String {
+    if strs.is_empty() {
+        return "".to_string();
+    }
+
+    let first = &strs[0];
+    let mut prefix = String::new();
+
+    'outer: for (i, c) in first.chars().enumerate() {
+        for s in &strs[1..] {
+            if let Some(other_c) = s.chars().nth(i) {
+                if c != other_c {
+                    break 'outer;
+                }
+            } else {
+                break 'outer;
+            }
+        }
+        prefix.push(c);
+    }
+    prefix
+}
