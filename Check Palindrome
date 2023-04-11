@@ -1,0 +1,10 @@
+fn is_palindrome(input_str: &str) -> bool {
+    let chars: Vec<char> = input_str.chars().collect();
+    let len = chars.len();
+    for i in 0..len / 2 {
+        if chars[i] != chars[len - i - 1] {
+            return false;
+        }
+    }
+    true
+}
